@@ -1,4 +1,6 @@
 import { Global, css } from "@emotion/react";
+import { MylistProvider } from "../context/MylistContext";
+import { CatchProvider } from "../context/CatchContext";
 
 const GlobalCSS = css`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
@@ -6,6 +8,7 @@ const GlobalCSS = css`
     padding: 0;
     margin: 0;
     font-family: "Poppins", sans-serif;
+    background-color: #fafafa;
   }
 
   a {
@@ -25,10 +28,12 @@ const GlobalCSS = css`
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Global styles={GlobalCSS} />
-      <Component {...pageProps} />
-    </>
+    <MylistProvider>
+      <CatchProvider>
+        <Global styles={GlobalCSS} />
+        <Component {...pageProps} />
+      </CatchProvider>
+    </MylistProvider>
   );
 }
 

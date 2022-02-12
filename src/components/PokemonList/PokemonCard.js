@@ -1,6 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { typesColor } from "../../../src/info/typecolor";
+import { css } from "@emotion/react";
+
+const dynamicStyle = (props) => css`
+  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.18);
+`;
+const dynamicStyle2 = (props) => css`
+  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 1);
+`;
 
 const Card = styled.div`
   width: 200px;
@@ -8,6 +17,7 @@ const Card = styled.div`
   padding: 20px 18px;
   margin: 0px 10px 10px 0px;
   border-radius: 7px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
 
   display: flex;
   flex-direction: column;
@@ -16,7 +26,8 @@ const Card = styled.div`
 
   position: relative;
 
-  background-color: rgba(190, 249, 131, 0.5);
+  /* background-color: rgba(190, 249, 131, 0.5); */
+  ${dynamicStyle}
 
   img {
   }
@@ -34,16 +45,6 @@ const Card = styled.div`
     .types {
       display: flex;
       align-items: center;
-      .type-card {
-        background-color: lightgray;
-        padding: 5px 7px;
-        border-radius: 8px;
-        font-size: 10px;
-
-        &:first-child {
-          margin-right: 5px;
-        }
-      }
     }
 
     .owned {
@@ -62,9 +63,28 @@ const Card = styled.div`
   }
 `;
 
+const TypeCard = styled.div`
+  ${dynamicStyle2}
+  padding: 5px 7px;
+  border-radius: 8px;
+  font-size: 10px;
+
+  &:first-child {
+    margin-right: 5px;
+  }
+`;
+
 const PokemonCard = ({ pokemon }) => {
+  const find = typesColor.find(
+    (x) => x.name === pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name
+  );
+  const red = find.red;
+  const blue = find.blue;
+  const green = find.green;
+
   return (
-    <Card>
+    <Card red={red} blue={blue} green={green}>
+      {/* <Card> */}
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
         alt=""
@@ -73,7 +93,21 @@ const PokemonCard = ({ pokemon }) => {
       <div className="short-info-container">
         <div className="types">
           {pokemon.pokemon_v2_pokemontypes.map((type) => (
-            <div className="type-card">{type.pokemon_v2_type.name}</div>
+            <TypeCard
+              red={
+                typesColor.find((x) => x.name === type.pokemon_v2_type.name).red
+              }
+              green={
+                typesColor.find((x) => x.name === type.pokemon_v2_type.name)
+                  .green
+              }
+              blue={
+                typesColor.find((x) => x.name === type.pokemon_v2_type.name)
+                  .blue
+              }
+            >
+              {type.pokemon_v2_type.name}
+            </TypeCard>
           ))}
         </div>
         <span className="owned">Owned: 0</span>

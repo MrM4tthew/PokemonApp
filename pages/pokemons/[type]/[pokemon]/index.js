@@ -1,33 +1,27 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Layout from "../../../../src/layout";
-// import Button from "../../src/components/Button";
+import styled from "@emotion/styled";
+import TopContainer from "../../../../src/components/PokemonDetail/TopContainer";
+import ContentContainer from "../../../../src/components/PokemonDetail/ContentContainer";
+import { CatchContext } from "../../../../context/CatchContext";
 
 const pokemonDetail = ({ pokemon }) => {
-  const [status, setStatus] = useState(false);
+  const { status } = useContext(CatchContext);
+  // const [status, setStatus] = useState(false);
+
+  // const catchPokemon = () => {
+  //   Math.random() < 0.5 == true ? setStatus(true) : setStatus(false);
+  // };
   const pokemonData = pokemon[0];
 
-  //   console.log(Math.random() < 0.5);
   console.log("status", status);
 
-  const catchPokemon = () =>
-    Math.random() < 0.5 == true ? setStatus(true) : setStatus(false);
-  //   const catchPokemon = () => {
-  //     if (Math.random() < 0.5 == true) {
-  //       setStatus(true);
-  //     } else {
-  //       setStatus(false);
-  //     }
-  //   };
-
   return (
-    <Layout>
-      <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
-        alt=""
-      />
-      <span>{pokemonData.name}</span>
-      <button onClick={catchPokemon}>Catch</button>
+    <Layout bannercolor={true}>
+      <TopContainer data={pokemonData} />
+      <ContentContainer data={pokemonData} />
+      {/* <button onClick={catchPokemon}>Catch</button> */}
       {/* <Button name="Catch" type="primary" /> */}
     </Layout>
   );
@@ -58,6 +52,16 @@ export async function getServerSideProps({ params }) {
           }
           pokemon_v2_pokemonabilities {
             pokemon_v2_ability {
+              name
+            }
+          }
+          pokemon_v2_pokemonmoves {
+            pokemon_v2_move {
+              name
+            }
+          }
+          pokemon_v2_pokemontypes {
+            pokemon_v2_type {
               name
             }
           }

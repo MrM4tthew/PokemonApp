@@ -1,22 +1,12 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Link from "next/link";
 import Layout from "../../../src/layout";
+import PokemonList from "../../../src/components/PokemonList";
 
 const index = ({ pokemons, pokemonType }) => {
   return (
     <Layout>
-      {pokemons.map((pokemon, index) => (
-        <div key={index}>
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-            alt=""
-          />
-          <span>{pokemon.name}</span>
-          <Link href={`/pokemons/${pokemonType}/${pokemon.name}`}>
-            <a>Detail</a>
-          </Link>
-        </div>
-      ))}
+      <PokemonList pokemons={pokemons} />
     </Layout>
   );
 };
@@ -42,6 +32,11 @@ export async function getServerSideProps({ params }) {
         ) {
           name
           id
+          pokemon_v2_pokemontypes {
+            pokemon_v2_type {
+              name
+            }
+          }
         }
       }
     `,

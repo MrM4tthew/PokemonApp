@@ -7,6 +7,7 @@ const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 255, 0.2);
+  background-color: white;
 
   .header-box {
     display: flex;
