@@ -6,7 +6,7 @@ import TopContainer from "../../../../src/components/PokemonDetail/TopContainer"
 import ContentContainer from "../../../../src/components/PokemonDetail/ContentContainer";
 import { CatchContext } from "../../../../context/CatchContext";
 
-const pokemonDetail = ({ pokemon }) => {
+const PokemonDetail = ({ pokemon }) => {
   const { status } = useContext(CatchContext);
   const pokemonData = pokemon[0];
 
@@ -75,4 +75,4 @@ export async function getServerSideProps({ params }) {
   };
 }
 
-export default pokemonDetail;
+export default PokemonDetail;

@@ -74,7 +74,6 @@ const TopCTNR = styled.div`
 const TopContainer = ({ data }) => {
   const { catchPokemon, setPokemon, status, pokemon } =
     useContext(CatchContext);
-  console.log("pokemon", pokemon);
 
   useEffect(() => {
     if (status) {

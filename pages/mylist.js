@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CatchContext } from "../context/CatchContext";
 import PersonalList from "../src/components/PersonalList";
 
-const mylist = () => {
+const Mylist = () => {
   const { data } = useContext(CatchContext);
   return (
     <Layout>
@@ -12,4 +12,4 @@ const mylist = () => {
   );
 };
 
-export default mylist;
+export default Mylist;

@@ -10,7 +10,13 @@ const OwnedPokemonCard = ({ item }) => {
         alt=""
       />
       <h2>{item.nickname}</h2>
-      <button onClick={() => deletePokemon(item.nickname)}>Release</button>
+      <button
+        className="remove-btn"
+        onClick={() => deletePokemon(item.nickname)}
+      >
+        Release
+      </button>
+      {/* <button className="remove-btn" da>Release</button> */}
     </div>
   );
 };
