@@ -1,5 +1,4 @@
 import { Global, css } from "@emotion/react";
-import { MylistProvider } from "../context/MylistContext";
 import { CatchProvider } from "../context/CatchContext";
 
 const GlobalCSS = css`
@@ -28,12 +27,10 @@ const GlobalCSS = css`
 
 function MyApp({ Component, pageProps }) {
   return (
-    <MylistProvider>
-      <CatchProvider>
-        <Global styles={GlobalCSS} />
-        <Component {...pageProps} />
-      </CatchProvider>
-    </MylistProvider>
+    <CatchProvider>
+      <Global styles={GlobalCSS} />
+      <Component {...pageProps} />
+    </CatchProvider>
   );
 }
 

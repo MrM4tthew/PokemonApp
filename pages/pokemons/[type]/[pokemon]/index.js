@@ -8,11 +8,6 @@ import { CatchContext } from "../../../../context/CatchContext";
 
 const pokemonDetail = ({ pokemon }) => {
   const { status } = useContext(CatchContext);
-  // const [status, setStatus] = useState(false);
-
-  // const catchPokemon = () => {
-  //   Math.random() < 0.5 == true ? setStatus(true) : setStatus(false);
-  // };
   const pokemonData = pokemon[0];
 
   console.log("status", status);
@@ -21,8 +16,6 @@ const pokemonDetail = ({ pokemon }) => {
     <Layout bannercolor={true}>
       <TopContainer data={pokemonData} />
       <ContentContainer data={pokemonData} />
-      {/* <button onClick={catchPokemon}>Catch</button> */}
-      {/* <Button name="Catch" type="primary" /> */}
     </Layout>
   );
 };

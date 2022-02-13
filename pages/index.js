@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Layout from "../src/layout";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import ListType from "../src/components/CategoryList";
@@ -27,8 +26,6 @@ export async function getStaticProps() {
       }
     `,
   });
-
-  // console.log("data", data);
 
   return {
     props: {

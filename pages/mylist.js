@@ -1,11 +1,15 @@
 import Layout from "../src/layout";
-import { MylistContext } from "../context/MylistContext";
 import { useContext } from "react";
+import { CatchContext } from "../context/CatchContext";
+import PersonalList from "../src/components/PersonalList";
 
 const mylist = () => {
-  const { myList, setMylist } = useContext(MylistContext);
-  console.log("value", myList);
-  return <Layout>mylist</Layout>;
+  const { data } = useContext(CatchContext);
+  return (
+    <Layout>
+      <PersonalList data={data} />
+    </Layout>
+  );
 };
 
 export default mylist;

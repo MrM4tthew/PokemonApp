@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { typesColor } from "../../../src/info/typecolor";
 import { css } from "@emotion/react";
+import { CatchContext } from "../../../context/CatchContext";
 
 const dynamicStyle = (props) => css`
   background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.18);
@@ -75,6 +76,16 @@ const TypeCard = styled.div`
 `;
 
 const PokemonCard = ({ pokemon }) => {
+  const { data } = useContext(CatchContext);
+
+  // Check pokemon name in local storage
+  const isFoundName = data.some((e) => {
+    if (e.name === pokemon.name) {
+      return true;
+    }
+  });
+
+  // Types color identification
   const find = typesColor.find(
     (x) => x.name === pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name
   );
@@ -110,7 +121,12 @@ const PokemonCard = ({ pokemon }) => {
             </TypeCard>
           ))}
         </div>
-        <span className="owned">Owned: 0</span>
+        <span className="owned">
+          Owned:{" "}
+          {isFoundName
+            ? data.filter((x) => x.name === pokemon.name).length
+            : "0"}
+        </span>
       </div>
       <Link
         href={`/pokemons/${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}/${pokemon.name}`}

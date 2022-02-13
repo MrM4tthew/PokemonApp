@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CatchContext } from "../../../context/CatchContext";
 
 const TopCTNR = styled.div`
@@ -72,8 +72,16 @@ const TopCTNR = styled.div`
 `;
 
 const TopContainer = ({ data }) => {
-  const { catchPokemon } = useContext(CatchContext);
-  // console.log("function", catchPokemon);
+  const { catchPokemon, setPokemon, status, pokemon } =
+    useContext(CatchContext);
+  console.log("pokemon", pokemon);
+
+  useEffect(() => {
+    if (status) {
+      setPokemon(data);
+    }
+  }, [status]);
+
   return (
     <TopCTNR>
       <div className="circle-image">
