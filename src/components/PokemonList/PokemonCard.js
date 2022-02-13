@@ -103,7 +103,7 @@ const PokemonCard = ({ pokemon }) => {
       <span className="name">{pokemon.name}</span>
       <div className="short-info-container">
         <div className="types">
-          {pokemon.pokemon_v2_pokemontypes.map((type) => (
+          {pokemon.pokemon_v2_pokemontypes.map((type, index) => (
             <TypeCard
               red={
                 typesColor.find((x) => x.name === type.pokemon_v2_type.name).red
@@ -116,6 +116,7 @@ const PokemonCard = ({ pokemon }) => {
                 typesColor.find((x) => x.name === type.pokemon_v2_type.name)
                   .blue
               }
+              key={index}
             >
               {type.pokemon_v2_type.name}
             </TypeCard>

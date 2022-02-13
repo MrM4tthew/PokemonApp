@@ -3,7 +3,7 @@ import { useState, createContext, useEffect } from "react";
 export const CatchContext = createContext();
 
 export const CatchProvider = (props) => {
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState();
   const [pokemon, setPokemon] = useState({});
   const [savedPokemon, setSavedPokemon] = useState({});
   const [data, setData] = useState([]);
@@ -21,8 +21,13 @@ export const CatchProvider = (props) => {
     localStorage.setItem("mylist", JSON.stringify(data));
   }, [data]);
 
+  const closePokemonRunForm = () => {
+    setStatus();
+  };
+
   const catchPokemon = () => {
     Math.random() < 0.5 == true ? setStatus(true) : setStatus(false);
+    // setStatus(false);
   };
 
   const savePokemon = () => {
@@ -48,6 +53,7 @@ export const CatchProvider = (props) => {
         catchPokemon,
         savePokemon,
         deletePokemon,
+        closePokemonRunForm,
       }}
     >
       {props.children}

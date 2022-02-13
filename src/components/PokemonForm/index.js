@@ -12,7 +12,7 @@ const PokemonForm = styled.div`
   /* justify-content: space-between; */
 `;
 
-const index = () => {
+const Index = () => {
   const { pokemon, setSavedPokemon, savePokemon, data, setStatus } =
     useContext(CatchContext);
   const [nickname, setNickname] = useState("");
@@ -76,4 +76,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

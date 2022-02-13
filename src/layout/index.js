@@ -35,15 +35,32 @@ const PokemonStoreContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .pokemon-flee-message {
+    background-color: white;
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const index = ({ children, bannercolor }) => {
-  const { status } = useContext(CatchContext);
+  const { status, closePokemonRunForm } = useContext(CatchContext);
   return (
     <>
       {status ? (
         <PokemonStoreContainer>
           <PokemonForm />
+        </PokemonStoreContainer>
+      ) : status == false ? (
+        <PokemonStoreContainer>
+          <div className="pokemon-flee-message">
+            <span>pokemon run away</span>
+            <button onClick={closePokemonRunForm}>Try again</button>
+          </div>
         </PokemonStoreContainer>
       ) : (
         ""
