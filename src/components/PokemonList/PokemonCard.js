@@ -5,52 +5,70 @@ import LazyLoad from "react-lazyload";
 import { typesColor } from "../../../src/info/typecolor";
 import { css } from "@emotion/react";
 import { CatchContext } from "../../../context/CatchContext";
+import { screenSize } from "../../../styles/screenSize";
 
-const dynamicStyle = (props) => css`
-  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.18);
-`;
+// const dynamicStyle = (props) => css`
+//   background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.18);
+// `;
 const dynamicStyle2 = (props) => css`
-  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 1);
+  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.5);
 `;
 
 const Card = styled.div`
-  width: 200px;
-  height: 200px;
-  padding: 20px 18px;
-  margin: 0px 10px 10px 0px;
+  width: 100%;
+  height: 243px;
+  padding: 20px 18px 25px 18px;
+  margin: 0px 0px 7px 0px;
   border-radius: 7px;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 
   position: relative;
+  background-color: white;
 
-  /* background-color: rgba(190, 249, 131, 0.5); */
-  ${dynamicStyle}
+  /* @media (max-width: ${screenSize.mobile}) {
+    width: 100%;
+  } */
 
   img {
+    width: 96px;
+    height: 96px;
   }
 
   .name {
     font-size: 18px;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-bottom: auto;
+    text-align: center;
+  }
+
+  .pokemon-id {
+    font-size: 11px;
+    opacity: 0.5;
+    margin-bottom: -2px;
+    /* margin-bottom: auto; */
   }
 
   .short-info-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     width: 100%;
 
     .types {
       display: flex;
       align-items: center;
+      margin-bottom: 5px;
     }
 
     .owned {
-      font-size: 14px;
+      font-size: 10px;
       opacity: 0.5;
     }
   }
@@ -70,14 +88,18 @@ const TypeCard = styled.div`
   padding: 5px 7px;
   border-radius: 8px;
   font-size: 10px;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.6);
 
   &:first-of-type {
-    margin-right: 5px;
+    margin-right: 3px;
   }
 `;
 
 const PokemonCard = ({ pokemon }) => {
   const { data } = useContext(CatchContext);
+  const name = pokemon.name.replace(/-/g, " ");
+  const nameLength = pokemon.id.toString().length;
 
   // Check pokemon name in local storage
   const isFoundName = data.some((e) => {
@@ -86,17 +108,22 @@ const PokemonCard = ({ pokemon }) => {
     }
   });
 
-  // Types color identification
-  const find = typesColor.find(
-    (x) => x.name === pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name
-  );
-  const red = find.red;
-  const blue = find.blue;
-  const green = find.green;
+  // Change pokemon id format
+  const pokeId = () => {
+    if (nameLength == 1) {
+      return `#00${pokemon.id}`;
+    } else if (nameLength == 2) {
+      return `#0${pokemon.id}`;
+    } else {
+      return `#${pokemon.id}`;
+    }
+  };
+
+  // console.log(pokeId());
 
   return (
-    <Card red={red} blue={blue} green={green}>
-      {/* <Card> */}
+    // <Card red={red} blue={blue} green={green}>
+    <Card>
       <LazyLoad height={400}>
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
@@ -104,7 +131,8 @@ const PokemonCard = ({ pokemon }) => {
         />
       </LazyLoad>
 
-      <span className="name">{pokemon.name}</span>
+      <span className="pokemon-id">{pokeId()}</span>
+      <span className="name">{name}</span>
       <div className="short-info-container">
         <div className="types">
           {pokemon.pokemon_v2_pokemontypes.map((type, index) => (

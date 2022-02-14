@@ -2,11 +2,24 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Link from "next/link";
 import Layout from "../../src/layout";
 import PokemonList from "../../src/components/PokemonList";
+import PokemonSearch from "../../src/components/PokemonSearch";
+import { useState } from "react";
 
 const index = ({ pokemons }) => {
+  const [search, setSearch] = useState(pokemons);
+
+  // Search function
+  const handleInputChange = (e) => {
+    var value = e.target.value;
+    var valueStr = value.toString().toLowerCase();
+    var result = pokemons.filter((x) => x.name.includes(valueStr));
+    setSearch(result);
+  };
+
   return (
     <Layout>
-      <PokemonList pokemons={pokemons} />
+      <PokemonSearch handleInputChange={handleInputChange} />
+      <PokemonList pokemons={search} />
     </Layout>
   );
 };

@@ -43,8 +43,8 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href={`/mylist`}>
-              <a>My List</a>
+            <Link href={`/mypokemon`}>
+              <a>My Pokemon</a>
             </Link>
           </li>
         </ul>

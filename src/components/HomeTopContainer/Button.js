@@ -13,14 +13,15 @@ const ActionButton = styled.a`
   width: 49.5%;
   height: 132px;
   font-size: 25px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1.5px;
   text-decoration: none;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 25px;
+  /* border-radius: 25px; */
+  border-radius: 10px;
   cursor: pointer;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 

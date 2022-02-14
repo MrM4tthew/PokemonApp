@@ -47,8 +47,34 @@ const PokemonCatchContainer = styled.div`
   }
 `;
 
+const DeleteOwnedPokemonFormContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .deletepokemon-box {
+    background-color: white;
+  }
+`;
+
 const index = ({ children, bannercolor }) => {
-  const { status, closePokemonRunForm } = useContext(CatchContext);
+  const {
+    status,
+    closePokemonRunForm,
+    dltStatus,
+    nickname,
+    deletePokemon,
+    closeOwnedPokemonDeleteForm,
+  } = useContext(CatchContext);
   return (
     <>
       {status ? (
@@ -65,6 +91,22 @@ const index = ({ children, bannercolor }) => {
       ) : (
         ""
       )}
+      {dltStatus ? (
+        <DeleteOwnedPokemonFormContainer>
+          <div className="deletepokemon-box">
+            <div className="top-container">are you sure?</div>
+            <div className="bottom-container">
+              <button onClick={() => closeOwnedPokemonDeleteForm()}>
+                Cancel
+              </button>
+              <button onClick={() => deletePokemon(nickname)}>Delete</button>
+            </div>
+          </div>
+        </DeleteOwnedPokemonFormContainer>
+      ) : (
+        ""
+      )}
+
       <Header />
       <PageContainer>
         {bannercolor ? <ColorBanner /> : ""}
