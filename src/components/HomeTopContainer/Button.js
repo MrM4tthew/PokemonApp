@@ -26,10 +26,12 @@ const ActionButton = styled.a`
 
   @media (max-width: ${screenSize.mobile}) {
     width: 48.5%;
-    font-size: 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    height: 70px;
   }
   @media (max-width: ${screenSize.smallMobile}) {
-    font-size: 17px;
+    font-size: 13px;
   }
 `;
 
