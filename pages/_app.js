@@ -25,9 +25,9 @@ const GlobalCSS = css`
   }
 
   .container-title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
-    margin-bottom: 26px;
+    margin-bottom: 17px;
     opacity: 0.7;
   }
 `;
