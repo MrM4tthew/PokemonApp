@@ -5,7 +5,7 @@ import PokemonList from "../../src/components/PokemonList";
 import PokemonSearch from "../../src/components/PokemonSearch";
 import { useState } from "react";
 
-const index = ({ pokemons }) => {
+const Index = ({ pokemons }) => {
   const [search, setSearch] = useState(pokemons);
 
   // Search function
@@ -56,4 +56,4 @@ export async function getServerSideProps({ params }) {
   };
 }
 
-export default index;
+export default Index;
