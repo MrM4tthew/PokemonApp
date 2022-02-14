@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import Button from "./Button";
 import InfoBanner from "./InfoBanner";
+import { screenSize } from "../../../styles/screenSize";
 
 const ActionBTNData = [
   {
@@ -27,6 +28,11 @@ const ActionButtonContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
+  /* @media (max-width: ${screenSize.mobile}) {
+    flex-direction: column;
+    height: 280px;
+  } */
 `;
 
 const index = () => {

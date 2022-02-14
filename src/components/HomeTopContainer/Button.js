@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import Link from "next/link";
 import React from "react";
+import { screenSize } from "../../../styles/screenSize";
 
 const dynamicStyle = (props) => css`
   background-color: ${props.color};
@@ -21,6 +22,15 @@ const ActionButton = styled.a`
   align-items: center;
   border-radius: 25px;
   cursor: pointer;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: ${screenSize.mobile}) {
+    width: 48.5%;
+    font-size: 20px;
+  }
+  @media (max-width: ${screenSize.smallMobile}) {
+    font-size: 17px;
+  }
 `;
 
 const Button = ({ name, color, link }) => {

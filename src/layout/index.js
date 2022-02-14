@@ -70,7 +70,7 @@ const index = ({ children, bannercolor }) => {
         {bannercolor ? <ColorBanner /> : ""}
         <div className="page-box set-width">{children}</div>
       </PageContainer>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
