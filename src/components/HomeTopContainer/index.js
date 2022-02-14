@@ -40,8 +40,13 @@ const index = () => {
     <Topcontainer>
       <InfoBanner />
       <ActionButtonContainer>
-        {ActionBTNData.map((data) => (
-          <Button name={data.name} color={data.color} link={data.link} />
+        {ActionBTNData.map((data, index) => (
+          <Button
+            name={data.name}
+            color={data.color}
+            link={data.link}
+            key={index}
+          />
         ))}
       </ActionButtonContainer>
     </Topcontainer>
