@@ -4,13 +4,11 @@ import ListType from "../src/components/CategoryList";
 import ListGeneration from "../src/components/GenerationList";
 import HomeTopContainer from "../src/components/HomeTopContainer";
 
-export default function Home({ pokemonTypes, pokemonGenerations }) {
-  console.log("generations", pokemonGenerations);
+export default function Home({ pokemonTypes }) {
   return (
     <Layout>
       <HomeTopContainer />
       <ListType types={pokemonTypes} />
-      <ListGeneration generations={pokemonGenerations} />
     </Layout>
   );
 }
@@ -28,9 +26,6 @@ export async function getStaticProps() {
           name
           id
         }
-        pokemon_v2_generation {
-          name
-        }
       }
     `,
   });
@@ -38,7 +33,6 @@ export async function getStaticProps() {
   return {
     props: {
       pokemonTypes: data.pokemon_v2_type,
-      pokemonGenerations: data.pokemon_v2_generation,
     },
   };
 }

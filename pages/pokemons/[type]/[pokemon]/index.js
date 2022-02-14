@@ -2,7 +2,6 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useContext, useState } from "react";
 import Layout from "../../../../src/layout";
 import styled from "@emotion/styled";
-import TopContainer from "../../../../src/components/PokemonDetail/TopContainer";
 import ContentContainer from "../../../../src/components/PokemonDetail/ContentContainer";
 import { CatchContext } from "../../../../context/CatchContext";
 
@@ -14,8 +13,7 @@ const PokemonDetail = ({ pokemon }) => {
 
   return (
     <Layout bannercolor={true} detailData={pokemonData}>
-      {/* <TopContainer data={pokemonData} /> */}
-      <ContentContainer data={pokemonData} />
+      <ContentContainer pokemonData={pokemonData} />
     </Layout>
   );
 };

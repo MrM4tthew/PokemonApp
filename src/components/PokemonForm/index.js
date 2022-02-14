@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { CatchContext } from "../../../context/CatchContext";
+import { enableBodyScroll } from "body-scroll-lock";
 
 const PokemonForm = styled.div`
   background-color: white;
@@ -132,7 +133,11 @@ const Index = () => {
           {message}
           {isFoundNickname ? "nickname is taken" : ""}
           {/* {message2} */}
-          <button type="submit" disabled={disable}>
+          <button
+            type="submit"
+            onClick={enableBodyScroll(document)}
+            disabled={disable}
+          >
             Catch
           </button>
         </form>

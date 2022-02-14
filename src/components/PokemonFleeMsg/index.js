@@ -57,7 +57,7 @@ const Index = () => {
         <button
           onClick={() => {
             closePokemonRunForm();
-            enableBodyScroll();
+            enableBodyScroll(document);
           }}
         >
           Try again

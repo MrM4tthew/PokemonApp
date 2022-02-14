@@ -125,7 +125,6 @@ const DeleteOwnedPokemonFormContainer = styled.div`
 const index = ({ children, bannercolor, detailData }) => {
   const {
     status,
-    closePokemonRunForm,
     dltStatus,
     nickname,
     deletePokemon,
