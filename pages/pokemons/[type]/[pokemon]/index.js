@@ -13,8 +13,8 @@ const PokemonDetail = ({ pokemon }) => {
   console.log("status", status);
 
   return (
-    <Layout bannercolor={true}>
-      <TopContainer data={pokemonData} />
+    <Layout bannercolor={true} detailData={pokemonData}>
+      {/* <TopContainer data={pokemonData} /> */}
       <ContentContainer data={pokemonData} />
     </Layout>
   );

@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import React, { useContext } from "react";
+import { disableBodyScroll } from "body-scroll-lock";
 import { CatchContext } from "../../../context/CatchContext";
 
 const Card = styled.div`
   width: 100%;
-  height: 223px;
+  height: 230px;
   padding: 20px 13px 18px 13px;
   margin: 0px 0px 7px 0px;
   border-radius: 7px;
@@ -40,11 +41,11 @@ const Card = styled.div`
 
   .remove-btn {
     width: 100%;
-    height: 25px;
+    height: 35px;
     border-radius: 6px;
     background-color: #ff0000;
     color: white;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
     border: none;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
@@ -63,8 +64,10 @@ const OwnedPokemonCard = ({ item }) => {
       <span className="name">{item.name}</span>
       <button
         className="remove-btn"
-        // onClick={() => deletePokemon(item.nickname)}
-        onClick={() => openOwnedPokemonDeleteForm(item.nickname)}
+        onClick={() => {
+          openOwnedPokemonDeleteForm(item.nickname);
+          disableBodyScroll(document);
+        }}
       >
         Release
       </button>
