@@ -7,7 +7,7 @@ const OwnedPokemonCard = ({ item }) => {
     <div>
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.pokemonId}.png`}
-        alt=""
+        alt="pokemon"
       />
       <h2>{item.nickname}</h2>
       <button

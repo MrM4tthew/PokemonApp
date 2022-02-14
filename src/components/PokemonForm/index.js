@@ -16,7 +16,8 @@ const Index = () => {
   const { pokemon, setSavedPokemon, savePokemon, data, setStatus } =
     useContext(CatchContext);
   const [nickname, setNickname] = useState("");
-  const [message1, setMessage] = useState("");
+  const [message, setMessage] = useState("");
+  const [disable, setDisable] = useState(true);
 
   useEffect(() => {
     setSavedPokemon({
@@ -25,6 +26,12 @@ const Index = () => {
       nickname: nickname,
     });
     setMessage("");
+
+    if (nickname != "") {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
   }, [nickname]);
 
   const isFoundNickname = data.some((e) => {
@@ -33,21 +40,11 @@ const Index = () => {
     }
   });
 
-  const validate = () => {
-    if (nickname == "") {
-      setMessage("name cannot be empty");
-      return false;
-    }
-
-    return true;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = validate();
-    if (isValid && !isFoundNickname) {
+    if (!isFoundNickname) {
       savePokemon();
-      setStatus(false);
+      setStatus();
     }
   };
 
@@ -64,13 +61,16 @@ const Index = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          placeholder="nickname"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
         />
-        {message1}
+        {message}
         {isFoundNickname ? "nickname is taken" : ""}
         {/* {message2} */}
-        <input type="submit" />
+        <button type="submit" disabled={disable}>
+          Catch
+        </button>
       </form>
     </PokemonForm>
   );

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import LazyLoad from "react-lazyload";
 import { typesColor } from "../../../src/info/typecolor";
 import { css } from "@emotion/react";
 import { CatchContext } from "../../../context/CatchContext";
@@ -70,7 +71,7 @@ const TypeCard = styled.div`
   border-radius: 8px;
   font-size: 10px;
 
-  &:first-child {
+  &:first-of-type {
     margin-right: 5px;
   }
 `;
@@ -96,10 +97,13 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <Card red={red} blue={blue} green={green}>
       {/* <Card> */}
-      <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-        alt=""
-      />
+      <LazyLoad height={400}>
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+          alt=""
+        />
+      </LazyLoad>
+
       <span className="name">{pokemon.name}</span>
       <div className="short-info-container">
         <div className="types">
@@ -123,10 +127,10 @@ const PokemonCard = ({ pokemon }) => {
           ))}
         </div>
         <span className="owned">
-          Owned:{" "}
+          Owned:
           {isFoundName
-            ? data.filter((x) => x.name === pokemon.name).length
-            : "0"}
+            ? ` ${data.filter((x) => x.name === pokemon.name).length}`
+            : " 0"}
         </span>
       </div>
       <Link

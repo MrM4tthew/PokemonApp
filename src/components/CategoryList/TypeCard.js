@@ -4,12 +4,13 @@ import Link from "next/link";
 import React from "react";
 import { typesColor } from "../../../src/info/typecolor";
 
-const dynamicStyle = (props) => css`
-  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.45);
-`;
+// const dynamicStyle = (props) => css`
+//   background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.45);
+// `;
 
 const TypeCrd = styled.div`
-  ${dynamicStyle}
+  /* ${dynamicStyle} */
+  background-color: #f0f0f0;
   height: 50px;
   padding: 0px 20px;
   display: flex;
@@ -20,7 +21,7 @@ const TypeCrd = styled.div`
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
 
   span {
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0.6;
   }
 
@@ -35,14 +36,14 @@ const TypeCrd = styled.div`
 `;
 
 const TypeCard = ({ type }) => {
-  const find = typesColor.find((x) => x.name === type.name);
-  const red = find.red;
-  const blue = find.blue;
-  const green = find.green;
+  // const find = typesColor.find((x) => x.name === type.name);
+  // const red = find.red;
+  // const blue = find.blue;
+  // const green = find.green;
 
   return (
-    <TypeCrd red={red} blue={blue} green={green}>
-      {/* <TypeCrd> */}
+    // <TypeCrd red={red} blue={blue} green={green}>
+    <TypeCrd>
       <span>{type.name}</span>
       <Link href={`/pokemons/${type.name}`}>
         <a></a>

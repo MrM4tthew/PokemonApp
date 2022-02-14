@@ -10,7 +10,6 @@ const PokemonList = styled.div`
 `;
 
 const index = ({ pokemons }) => {
-  console.log("colorsCode", typesColor);
   return (
     <PokemonList>
       {pokemons.map((pokemon, index) => (

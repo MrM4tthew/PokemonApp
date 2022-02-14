@@ -22,7 +22,7 @@ const ColorBanner = styled.div`
   height: 150px;
 `;
 
-const PokemonStoreContainer = styled.div`
+const PokemonCatchContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -52,16 +52,16 @@ const index = ({ children, bannercolor }) => {
   return (
     <>
       {status ? (
-        <PokemonStoreContainer>
+        <PokemonCatchContainer>
           <PokemonForm />
-        </PokemonStoreContainer>
+        </PokemonCatchContainer>
       ) : status == false ? (
-        <PokemonStoreContainer>
+        <PokemonCatchContainer>
           <div className="pokemon-flee-message">
             <span>pokemon run away</span>
             <button onClick={closePokemonRunForm}>Try again</button>
           </div>
-        </PokemonStoreContainer>
+        </PokemonCatchContainer>
       ) : (
         ""
       )}

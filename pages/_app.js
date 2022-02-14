@@ -20,8 +20,15 @@ const GlobalCSS = css`
   }
 
   .set-width {
-    max-width: 1000px;
-    width: calc(100vw - 200px);
+    max-width: 900px;
+    width: calc(100vw - 2rem);
+  }
+
+  .container-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 26px;
+    opacity: 0.7;
   }
 `;
 

@@ -48,7 +48,7 @@ const TopCTNR = styled.div`
           padding: 6px 10px;
           font-size: 11px;
           border-radius: 7px;
-          &:first-child {
+          &:first-of-type {
             margin-right: 5px;
           }
         }
@@ -72,8 +72,7 @@ const TopCTNR = styled.div`
 `;
 
 const TopContainer = ({ data }) => {
-  const { catchPokemon, setPokemon, status, pokemon } =
-    useContext(CatchContext);
+  const { catchPokemon, setPokemon, status } = useContext(CatchContext);
 
   useEffect(() => {
     if (status) {
@@ -86,15 +85,17 @@ const TopContainer = ({ data }) => {
       <div className="circle-image">
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`}
-          alt=""
+          alt="pokemon"
         />
       </div>
       <div className="name-info-container">
         <div className="name-container">
-          <span className="name">{data.name}</span>
+          <span title="name" className="name">
+            {data.name}
+          </span>
           <div className="types-container">
             {data.pokemon_v2_pokemontypes.map((type, index) => (
-              <div className="type-card" key={index}>
+              <div title="pokemon-type" className="type-card" key={index}>
                 {type.pokemon_v2_type.name}
               </div>
             ))}

@@ -1,10 +1,12 @@
 import Layout from "../src/layout";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import ListType from "../src/components/CategoryList";
+import HomeTopContainer from "../src/components/HomeTopContainer";
 
-export default function Home({ pokemonTypes }) {
+export default function Home({ pokemonTypes, pokemonGenerations }) {
   return (
     <Layout>
+      <HomeTopContainer />
       <ListType types={pokemonTypes} />
     </Layout>
   );
@@ -18,10 +20,13 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`
-      query samplePokeAPIquery {
+      query {
         pokemon_v2_type {
           name
           id
+        }
+        pokemon_v2_generation {
+          name
         }
       }
     `,
@@ -30,6 +35,7 @@ export async function getStaticProps() {
   return {
     props: {
       pokemonTypes: data.pokemon_v2_type,
+      pokemonGenerations: data.pokemon_v2_generation,
     },
   };
 }
