@@ -24,7 +24,7 @@ const Index = ({ pokemons }) => {
   );
 };
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps() {
   const client = new ApolloClient({
     uri: "https://beta.pokeapi.co/graphql/v1beta",
     cache: new InMemoryCache(),
@@ -46,8 +46,6 @@ export async function getServerSideProps({ params }) {
       }
     `,
   });
-
-  // console.log("data", data);
 
   return {
     props: {
