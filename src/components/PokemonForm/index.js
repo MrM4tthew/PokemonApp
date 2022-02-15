@@ -75,6 +75,14 @@ const PokemonForm = styled.div`
         opacity: 0.1;
         transition: 100ms ease-in;
       }
+
+      .errMsg {
+        font-size: 12px;
+        color: red;
+        opacity: 0.7;
+        margin-top: -6px;
+        margin-bottom: 7px;
+      }
     }
   }
 `;
@@ -86,26 +94,30 @@ const Index = () => {
   const [message, setMessage] = useState("");
   const [disable, setDisable] = useState(true);
 
-  useEffect(() => {
-    setSavedPokemon({
-      pokemonId: pokemon.id,
-      name: pokemon.name,
-      nickname: nickname,
-    });
-    setMessage("");
-
-    if (nickname != "") {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
-  }, [nickname]);
-
   const isFoundNickname = data.some((e) => {
     if (e.nickname === nickname && e.name === pokemon.name) {
       return true;
     }
   });
+  useEffect(() => {
+    setSavedPokemon({
+      pokemonId: pokemon.id,
+      name: pokemon.name,
+      nickname: nickname,
+      type: pokemon.pokemon_v2_pokemontypes,
+    });
+    setMessage("");
+
+    if (nickname != "") {
+      if (isFoundNickname == true) {
+        setDisable(true);
+      } else {
+        setDisable(false);
+      }
+    } else {
+      setDisable(true);
+    }
+  }, [nickname]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -136,8 +148,11 @@ const Index = () => {
             onChange={(e) => setNickname(e.target.value)}
           />
           {message}
-          {isFoundNickname ? "nickname is taken" : ""}
-          {/* {message2} */}
+          {isFoundNickname ? (
+            <span className="errMsg">nickname is taken</span>
+          ) : (
+            ""
+          )}
           <button
             type="submit"
             onClick={enableBodyScroll(document)}

@@ -26,14 +26,14 @@ const SearchBar = styled.div`
     border-radius: 8px;
     box-sizing: border-box;
     padding-left: 18px;
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
     font-size: 18px;
     color: rgba(0, 0, 0, 0.5);
     opacity: 1;
   }
 
   input::placeholder {
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.3);
   }
 
   input:focus {

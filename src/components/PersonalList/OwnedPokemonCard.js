@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React, { useContext } from "react";
 import { disableBodyScroll } from "body-scroll-lock";
 import { CatchContext } from "../../../context/CatchContext";
+import Link from "next/link";
 
 const Card = styled.div`
   width: 100%;
@@ -50,6 +51,15 @@ const Card = styled.div`
     border: none;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
   }
+
+  a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const OwnedPokemonCard = ({ item }) => {
@@ -71,7 +81,11 @@ const OwnedPokemonCard = ({ item }) => {
       >
         Release
       </button>
-      {/* <button className="remove-btn" da>Release</button> */}
+      <Link
+        href={`/pokemons/${item.type[0].pokemon_v2_type.name}/${item.name}`}
+      >
+        <a></a>
+      </Link>
     </Card>
   );
 };
