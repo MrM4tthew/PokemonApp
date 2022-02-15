@@ -95,7 +95,10 @@ const Index = () => {
   const [disable, setDisable] = useState(true);
 
   const isFoundNickname = data.some((e) => {
-    if (e.nickname === nickname && e.name === pokemon.name) {
+    if (
+      e.nickname.toLowerCase() === nickname.toLowerCase() &&
+      e.name === pokemon.name
+    ) {
       return true;
     }
   });
