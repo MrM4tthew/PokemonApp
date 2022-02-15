@@ -17,7 +17,7 @@ const Index = ({ pokemons }) => {
   };
 
   return (
-    <Layout>
+    <Layout page={"Pokemons"}>
       <PokemonSearch handleInputChange={handleInputChange} />
       <PokemonList pokemons={search} />
     </Layout>

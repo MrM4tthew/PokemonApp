@@ -25,6 +25,12 @@ const Card = styled.div`
 
   position: relative;
   background-color: white;
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
 
   img {
     width: 96px;
@@ -71,6 +77,11 @@ const Card = styled.div`
     right: 0;
     height: 100%;
     width: 100%;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 `;
 

@@ -5,7 +5,7 @@ import HomeTopContainer from "../src/components/HomeTopContainer";
 
 export default function Home({ pokemonTypes }) {
   return (
-    <Layout>
+    <Layout page={"homepage"}>
       <HomeTopContainer />
       <ListType types={pokemonTypes} />
     </Layout>

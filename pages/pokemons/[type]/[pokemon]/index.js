@@ -24,6 +24,7 @@ const PokemonDetail = ({ pokemon }) => {
       red={red}
       blue={blue}
       green={green}
+      page={pokemonData.name}
     >
       <ContentContainer pokemonData={pokemonData} />
     </Layout>

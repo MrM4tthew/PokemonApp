@@ -24,7 +24,7 @@ const Mypokemon = () => {
   };
 
   return (
-    <Layout>
+    <Layout page={"My Pokemon"}>
       <PokemonSearch
         data={search}
         handleInputChange={handleInputChange}

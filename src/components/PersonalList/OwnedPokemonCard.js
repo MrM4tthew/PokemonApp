@@ -50,26 +50,39 @@ const Card = styled.div`
     font-weight: 600;
     border: none;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 80ms ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
-  a {
+  /* a {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     height: 100%;
-  }
+  } */
 `;
 
 const OwnedPokemonCard = ({ item }) => {
   const { openOwnedPokemonDeleteForm } = useContext(CatchContext);
   return (
     <Card>
-      <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.pokemonId}.png`}
-        alt="pokemon"
-      />
+      <Link
+        href={`/pokemons/${item.type[0].pokemon_v2_type.name}/${item.name}`}
+      >
+        <a>
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.pokemonId}.png`}
+            alt="pokemon"
+          />
+        </a>
+      </Link>
       <span className="nickname">{item.nickname}</span>
       <span className="name">{item.name}</span>
       <button
@@ -81,11 +94,6 @@ const OwnedPokemonCard = ({ item }) => {
       >
         Release
       </button>
-      <Link
-        href={`/pokemons/${item.type[0].pokemon_v2_type.name}/${item.name}`}
-      >
-        <a></a>
-      </Link>
     </Card>
   );
 };

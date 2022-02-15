@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { screenSize } from "../../styles/screenSize";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { useRouter } from "next/router";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -46,6 +47,16 @@ const HeaderContainer = styled.header`
       letter-spacing: 0.5px;
       font-weight: 500;
       opacity: 0.7;
+      transition: opacity 80ms ease-in-out;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &.active {
+        opacity: 0.3;
+        pointer-events: none;
+      }
     }
   }
 
@@ -153,6 +164,17 @@ const HeaderContainer = styled.header`
         a {
           font-size: 30px;
           letter-spacing: 1.5px;
+          opacity: 1;
+          transition: opacity 80ms ease-in-out;
+
+          &:hover {
+            opacity: 0.7;
+          }
+
+          &.active {
+            opacity: 0.4;
+            pointer-events: none;
+          }
         }
       }
 
@@ -184,6 +206,7 @@ const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [innerMenuState, setInnerMenuState] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const router = useRouter();
   return (
     <HeaderContainer>
       <div className="header-box set-width">
@@ -194,7 +217,9 @@ const Header = () => {
           {menuData.map((menu, index) => (
             <li key={index}>
               <Link href={menu.link}>
-                <a>{menu.name}</a>
+                <a className={router.pathname == menu.link ? "active" : ""}>
+                  {menu.name}
+                </a>
               </Link>
             </li>
           ))}
@@ -253,6 +278,7 @@ const Header = () => {
                             disableBodyScroll(document);
                           }
                         }}
+                        className={router.pathname == menu.link ? "active" : ""}
                       >
                         {menu.name}
                       </a>
