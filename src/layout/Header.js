@@ -6,13 +6,19 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 255, 0.2);
-  background-color: white;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  /* background-color: white; */
+  /* background-color: #3b4cca; */
+  background-color: #ffde00;
 
   .header-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  img {
+    width: 35px;
   }
 
   ul {
@@ -31,6 +37,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <div className="header-box set-width">
+        <img src="/pokemonLogo.svg" alt="" />
         <ul>
           <li>
             <Link href={`/`}>

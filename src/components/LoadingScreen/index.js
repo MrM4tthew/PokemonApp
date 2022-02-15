@@ -61,10 +61,10 @@ const index = () => {
     <LoadingScreen>
       <div className="loadingScreenBox">
         <img src="/pikachuAnimated.svg" alt="" />
-        <div class="loader">
-          Please Wait<span class="loader__dot">.</span>
-          <span class="loader__dot">.</span>
-          <span class="loader__dot">.</span>
+        <div className="loader">
+          Please Wait<span className="loader__dot">.</span>
+          <span className="loader__dot">.</span>
+          <span className="loader__dot">.</span>
         </div>
       </div>
     </LoadingScreen>
