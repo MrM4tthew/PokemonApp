@@ -24,12 +24,9 @@ const LoadingScreen = styled.div`
     left: 0;
     right: 0;
 
-    /* @media (max-width: ${screenSize.mobile}) {
-      position: initial;
-      top: initial;
-      left: initial;
-      right: initial;
-    } */
+    @media (max-width: ${screenSize.mobile}) {
+      top: 32vh;
+    }
     img {
       width: 500px;
       @media (max-width: ${screenSize.mobile}) {

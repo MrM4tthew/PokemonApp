@@ -18,7 +18,7 @@ const ActionBTNData = [
 ];
 
 const Topcontainer = styled.div`
-  margin: 30px 0px 100px 0px;
+  margin: 30px 0px 0px 0px;
   display: flex;
   flex-direction: column;
 `;
@@ -39,7 +39,7 @@ const index = () => {
   return (
     <Topcontainer>
       <InfoBanner />
-      <ActionButtonContainer>
+      {/* <ActionButtonContainer>
         {ActionBTNData.map((data, index) => (
           <Button
             name={data.name}
@@ -48,7 +48,7 @@ const index = () => {
             key={index}
           />
         ))}
-      </ActionButtonContainer>
+      </ActionButtonContainer> */}
     </Topcontainer>
   );
 };

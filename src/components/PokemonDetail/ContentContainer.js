@@ -101,7 +101,7 @@ const ContentCTR = styled.div`
           height: 95px;
         }
         .nickname {
-          font-size: 17px;
+          font-size: 14px;
           font-weight: 500;
           opacity: 0.8;
         }

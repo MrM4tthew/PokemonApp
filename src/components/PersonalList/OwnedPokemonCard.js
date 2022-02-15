@@ -26,10 +26,10 @@ const Card = styled.div`
   }
 
   .nickname {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     opacity: 0.8;
-    margin-bottom: -2px;
+    margin-bottom: 1px;
     text-align: center;
   }
 

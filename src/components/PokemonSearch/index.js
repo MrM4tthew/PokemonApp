@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 const SearchBar = styled.div`
@@ -29,6 +29,7 @@ const SearchBar = styled.div`
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
     font-size: 18px;
     color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
   }
 
   input::placeholder {
@@ -41,24 +42,49 @@ const SearchBar = styled.div`
     outline-width: 3px;
   }
 
+  input:disabled,
+  input[disabled] {
+    opacity: 0.1;
+    transition: 100ms ease-in;
+  }
+
   /* input::fo */
 `;
 
-const index = ({ handleInputChange, type, mypokemon }) => {
+const Index = ({ handleInputChange, type, mypokemon, data }) => {
+  const [disabled, setDisabled] = useState(true);
+  useEffect(() => {
+    if (data == "") {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [data]);
+
   return (
     <SearchBar>
       <span className="title">
         {mypokemon ? "My Pokemon" : "Pokemon List"}
         {type ? ` - ${type.toUpperCase()}` : ""}
       </span>
-      <span className="message">
-        {mypokemon
-          ? "Search your pokemon by nickname"
-          : "Search pokemon by name"}
-      </span>
-      <input type="text" placeholder="search..." onChange={handleInputChange} />
+      {disabled ? (
+        ""
+      ) : (
+        <span className="message">
+          {mypokemon
+            ? "Search your pokemon by nickname"
+            : "Search pokemon by name"}
+        </span>
+      )}
+
+      <input
+        type="text"
+        placeholder="search..."
+        onChange={handleInputChange}
+        disabled={disabled}
+      />
     </SearchBar>
   );
 };
 
-export default index;
+export default Index;

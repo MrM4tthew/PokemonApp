@@ -1,7 +1,6 @@
 import Layout from "../src/layout";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import ListType from "../src/components/CategoryList";
-import ListGeneration from "../src/components/GenerationList";
 import HomeTopContainer from "../src/components/HomeTopContainer";
 
 export default function Home({ pokemonTypes }) {
