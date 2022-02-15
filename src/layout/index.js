@@ -19,8 +19,8 @@ const dynamicStyle = (props) => css`
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  min-height: 100vh;
 
   .page-box {
     position: relative;
@@ -119,7 +119,7 @@ const index = ({
         )}
         <div className="page-box set-width">{children}</div>
       </PageContainer>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
