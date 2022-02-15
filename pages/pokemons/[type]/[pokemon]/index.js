@@ -4,15 +4,27 @@ import Layout from "../../../../src/layout";
 import styled from "@emotion/styled";
 import ContentContainer from "../../../../src/components/PokemonDetail/ContentContainer";
 import { CatchContext } from "../../../../context/CatchContext";
+import { typesColor } from "../../../../src/info/typecolor";
 
 const PokemonDetail = ({ pokemon }) => {
-  const { status } = useContext(CatchContext);
   const pokemonData = pokemon[0];
 
-  console.log("status", status);
+  const find = typesColor.find(
+    (x) =>
+      x.name === pokemonData.pokemon_v2_pokemontypes[0].pokemon_v2_type.name
+  );
+  const red = find.red;
+  const blue = find.blue;
+  const green = find.green;
 
   return (
-    <Layout bannercolor={true} detailData={pokemonData}>
+    <Layout
+      bannercolor={true}
+      detailData={pokemonData}
+      red={red}
+      blue={blue}
+      green={green}
+    >
       <ContentContainer pokemonData={pokemonData} />
     </Layout>
   );

@@ -8,6 +8,11 @@ import PokemonFleeMsg from "../components/PokemonFleeMsg";
 import { CatchContext } from "../../context/CatchContext";
 import TopContainer from "../components/PokemonDetail/TopContainer";
 import { screenSize } from "../../styles/screenSize";
+import { css } from "@emotion/react";
+
+const dynamicStyle = (props) => css`
+  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.18);
+`;
 
 const PageContainer = styled.div`
   display: flex;
@@ -21,7 +26,7 @@ const PageContainer = styled.div`
 `;
 
 const ColorBanner = styled.div`
-  background-color: lightblue;
+  ${dynamicStyle}
   width: 100%;
   height: 150px;
   display: flex;
@@ -122,7 +127,7 @@ const DeleteOwnedPokemonFormContainer = styled.div`
   }
 `;
 
-const index = ({ children, bannercolor, detailData }) => {
+const index = ({ children, bannercolor, detailData, red, blue, green }) => {
   const {
     status,
     dltStatus,
@@ -183,7 +188,7 @@ const index = ({ children, bannercolor, detailData }) => {
       <Header />
       <PageContainer>
         {bannercolor ? (
-          <ColorBanner>
+          <ColorBanner red={red} blue={blue} green={green}>
             <TopContainer data={detailData} />
           </ColorBanner>
         ) : (

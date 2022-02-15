@@ -25,7 +25,7 @@ const PokemonList = styled.div`
   @media (max-width: ${screenSize.mobile}) {
     grid-template-columns: 48.5% 48.5%;
     column-gap: 3%;
-    row-gap: calc((100vw - 2rem) * 0.01);
+    row-gap: calc((100vw - 2rem) * 0.03);
   }
 `;
 

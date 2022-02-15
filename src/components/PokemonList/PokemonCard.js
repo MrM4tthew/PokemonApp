@@ -22,14 +22,9 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
 
   position: relative;
   background-color: white;
-
-  /* @media (max-width: ${screenSize.mobile}) {
-    width: 100%;
-  } */
 
   img {
     width: 96px;

@@ -11,6 +11,8 @@ const LoadingScreen = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    /* height: calc(100vh - calc(100vh - 100%)); */
+    /* height: 100vh; */
   }
 
   .loadingScreenBox {
@@ -22,12 +24,12 @@ const LoadingScreen = styled.div`
     left: 0;
     right: 0;
 
-    @media (max-width: ${screenSize.mobile}) {
+    /* @media (max-width: ${screenSize.mobile}) {
       position: initial;
       top: initial;
       left: initial;
       right: initial;
-    }
+    } */
     img {
       width: 500px;
       @media (max-width: ${screenSize.mobile}) {

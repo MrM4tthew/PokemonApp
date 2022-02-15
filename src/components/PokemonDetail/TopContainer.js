@@ -1,14 +1,24 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { disableBodyScroll } from "body-scroll-lock";
 import { useContext, useEffect } from "react";
 import { CatchContext } from "../../../context/CatchContext";
 import { screenSize } from "../../../styles/screenSize";
+import { typesColor } from "../../info/typecolor";
+
+const dynamicStyle = (props) => css`
+  background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.5);
+`;
 
 const TopCTNR = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: ${screenSize.tablet}) {
+    height: 150px;
+  }
   @media (max-width: ${screenSize.mobile}) {
+    height: initial;
     padding: 50px 0px 20px 0px;
   }
   /* top: -50px; */
@@ -47,8 +57,9 @@ const TopCTNR = styled.div`
         font-weight: 600;
         margin-right: 10px;
         @media (max-width: ${screenSize.mobile}) {
-          font-size: 35px;
+          font-size: 28px;
           margin-right: initial;
+          margin-bottom: 3px;
         }
       }
 
@@ -57,17 +68,6 @@ const TopCTNR = styled.div`
         align-items: center;
         @media (max-width: ${screenSize.mobile}) {
           margin-bottom: 20px;
-        }
-
-        .type-card {
-          background-color: lightgray;
-          padding: 6px 10px;
-          font-size: 11px;
-          border-radius: 7px;
-          box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
-          &:first-of-type {
-            margin-right: 5px;
-          }
         }
       }
     }
@@ -112,6 +112,7 @@ const TopCTNR = styled.div`
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+
       .stat {
         display: flex;
         justify-content: space-between;
@@ -124,6 +125,17 @@ const TopCTNR = styled.div`
         }
       }
     }
+  }
+`;
+
+const Type = styled.div`
+  ${dynamicStyle}
+  padding: 6px 10px;
+  font-size: 11px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
+  &:first-of-type {
+    margin-right: 5px;
   }
 `;
 
@@ -151,9 +163,23 @@ const TopContainer = ({ data }) => {
             </span>
             <div className="types-container">
               {data.pokemon_v2_pokemontypes.map((type, index) => (
-                <div title="pokemon-type" className="type-card" key={index}>
+                <Type
+                  red={
+                    typesColor.find((x) => x.name === type.pokemon_v2_type.name)
+                      .red
+                  }
+                  green={
+                    typesColor.find((x) => x.name === type.pokemon_v2_type.name)
+                      .green
+                  }
+                  blue={
+                    typesColor.find((x) => x.name === type.pokemon_v2_type.name)
+                      .blue
+                  }
+                  key={index}
+                >
                   {type.pokemon_v2_type.name}
-                </div>
+                </Type>
               ))}
             </div>
           </div>

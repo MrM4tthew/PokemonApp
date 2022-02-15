@@ -63,6 +63,11 @@ const PokemonForm = styled.div`
         color: white;
         border-radius: 8px;
         transition: opacity 200ms ease-out;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.6;
+        }
       }
 
       button:disabled,

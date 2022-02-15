@@ -37,10 +37,20 @@ const PokemonFleeContainer = styled.div`
       width: 100%;
       height: 45px;
       border: none;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
-      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+      letter-spacing: 1px;
+      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
       border-radius: 8px;
+      color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(217, 217, 217, 1);
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity 100ms ease-in-out;
+
+      &:hover {
+        opacity: 0.45;
+      }
     }
   }
 `;

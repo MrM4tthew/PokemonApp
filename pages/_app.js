@@ -12,7 +12,7 @@ const GlobalCSS = css`
     padding: 0;
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
   }
 
   a {

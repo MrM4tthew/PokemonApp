@@ -7,9 +7,10 @@ import { screenSize } from "../../../styles/screenSize";
 const ContentCTR = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px 0px;
+  margin: 40px 0px;
 
   .owned-pokemon-container {
+    margin-bottom: 40px;
     .title-container {
       display: flex;
       margin-bottom: 15px;
@@ -19,23 +20,40 @@ const ContentCTR = styled.div`
 
       &.owned {
         align-items: center;
+        @media (max-width: ${screenSize.mobile}) {
+          justify-content: space-between;
+        }
         .title {
           margin-right: 10px;
         }
         button {
-          background-color: #ff1c1c;
+          background-color: rgba(255, 28, 28, 1);
           color: white;
-          height: 40px;
+          height: 35px;
           width: 100px;
           border-radius: 8px;
-          font-size: 14px;
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 1.5px;
           border: none;
           box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+          cursor: pointer;
+          opacity: 1;
+          transition: opacity 100ms ease-in-out;
+
+          &:hover {
+            opacity: 0.85;
+          }
         }
       }
 
       &.empty {
         flex-direction: column;
+
+        .subtitle {
+          font-size: 14px;
+          opacity: 0.4;
+        }
       }
     }
 
@@ -101,11 +119,11 @@ const ContentCTR = styled.div`
       display: flex;
       flex-wrap: wrap;
       .move-card {
-        background-color: #c2c2c2;
+        background-color: #dddddd;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #555555;
+        color: #818181;
         border-radius: 8px;
         padding: 10px 15px;
         font-size: 10px;
@@ -182,7 +200,7 @@ const ContentContainer = ({ pokemonData }) => {
         <div className="moves-list">
           {pokemonData.pokemon_v2_pokemonmoves.map((move, index) => (
             <div className="move-card" key={index}>
-              {move.pokemon_v2_move.name}
+              {move.pokemon_v2_move.name.replace(/-/g, " ")}
             </div>
           ))}
         </div>
