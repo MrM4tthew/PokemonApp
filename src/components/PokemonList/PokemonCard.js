@@ -7,10 +7,7 @@ import { css } from "@emotion/react";
 import { CatchContext } from "../../../context/CatchContext";
 import { screenSize } from "../../../styles/screenSize";
 
-// const dynamicStyle = (props) => css`
-//   background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.18);
-// `;
-const dynamicStyle2 = (props) => css`
+const dynamicStyle = (props) => css`
   background-color: rgba(${props.red}, ${props.green}, ${props.blue}, 0.5);
 `;
 
@@ -18,7 +15,6 @@ const Card = styled.div`
   width: 100%;
   height: 243px;
   padding: 20px 18px 25px 18px;
-  margin: 0px 0px 7px 0px;
   border-radius: 7px;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
@@ -84,7 +80,7 @@ const Card = styled.div`
 `;
 
 const TypeCard = styled.div`
-  ${dynamicStyle2}
+  ${dynamicStyle}
   padding: 5px 7px;
   border-radius: 8px;
   font-size: 10px;
@@ -124,12 +120,12 @@ const PokemonCard = ({ pokemon }) => {
   return (
     // <Card red={red} blue={blue} green={green}>
     <Card>
-      <LazyLoad height={400}>
-        <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-          alt=""
-        />
-      </LazyLoad>
+      {/* <LazyLoad height={200}> */}
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+        alt=""
+      />
+      {/* </LazyLoad> */}
 
       <span className="pokemon-id">{pokeId()}</span>
       <span className="name">{name}</span>

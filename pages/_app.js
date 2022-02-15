@@ -1,8 +1,13 @@
 import { Global, css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { CatchProvider } from "../context/CatchContext";
+import LoadingScreen from "../src/components/LoadingScreen";
 
 const GlobalCSS = css`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
   body {
     padding: 0;
     margin: 0;
@@ -33,10 +38,25 @@ const GlobalCSS = css`
 `;
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const [pageLoading, setPageLoading] = useState(false);
+  useEffect(() => {
+    const handleStart = () => {
+      setPageLoading(true);
+    };
+    const handleComplete = () => {
+      setPageLoading(false);
+    };
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+  }, [router]);
+
   return (
     <CatchProvider>
       <Global styles={GlobalCSS} />
-      <Component {...pageProps} />
+      {pageLoading ? <LoadingScreen /> : <Component {...pageProps} />}
     </CatchProvider>
   );
 }

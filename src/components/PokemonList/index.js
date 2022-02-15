@@ -10,18 +10,22 @@ const PokemonList = styled.div`
   grid-template-columns: 19.4% 19.4% 19.4% 19.4% 19.4%;
   margin: 20px 0px;
   column-gap: 0.75%;
+  row-gap: 7px;
 
   @media (max-width: ${screenSize.tablet}) {
     grid-template-columns: 24.4375% 24.4375% 24.4375% 24.4375%;
+    row-gap: calc((100vw - 2rem) * 0.007);
   }
 
   @media (max-width: ${screenSize.almostMobile}) {
-    grid-template-columns: 32.3% 32.3% 32.3%;
+    grid-template-columns: 32.8% 32.8% 32.8%;
+    row-gap: calc((100vw - 2rem) * 0.009);
   }
 
   @media (max-width: ${screenSize.mobile}) {
     grid-template-columns: 48.5% 48.5%;
-    column-gap: 7px;
+    column-gap: 3%;
+    row-gap: calc((100vw - 2rem) * 0.01);
   }
 `;
 
