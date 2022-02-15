@@ -149,7 +149,9 @@ const Index = () => {
           />
           {message}
           {isFoundNickname ? (
-            <span className="errMsg">nickname is taken</span>
+            <span data-testid="error-message" className="errMsg">
+              nickname is taken
+            </span>
           ) : (
             ""
           )}
