@@ -90,6 +90,13 @@ const ContentCTR = styled.div`
       .empty {
         justify-content: center;
         align-items: center;
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity 80ms ease-in-out;
+
+        &:hover {
+          opacity: 0.5;
+        }
       }
 
       .owned {
